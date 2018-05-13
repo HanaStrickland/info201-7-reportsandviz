@@ -51,9 +51,6 @@ exp_by_os <- survey_data %>%
             maximum = max(programming_exp, na.rm = TRUE)
   )
 
-<<<<<<< HEAD
-=======
-
 median_mac <- exp_by_os %>% 
   filter(os == "Mac OS X") %>% 
   select(median)
