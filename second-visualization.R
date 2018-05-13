@@ -4,7 +4,11 @@ library("stringr")
 library("ggplot2")
 library("plotly")
 library("ggthemes")
+
 survey_data <- read.csv("data/intro_survey.csv")
+
+colors <- c("#922626",  "#895b5b", "#6e617e"	, "#c7a0a0", "#a94267")
+seahawks_colors <- c("#36578c", "#4ea701", "#90918c")
 
 exp_and_cats <- select(survey_data, programming_exp, pet_preference) %>%
   filter(str_detect(pet_preference, "cat")) %>%
@@ -24,12 +28,9 @@ exp_and_dogs <- select(survey_data, programming_exp, pet_preference) %>%
 
 cat_vs_dog_lovers <- left_join(exp_and_cats, exp_and_dogs)
 
-colors <- c("#922626",  "#895b5b", "#6e617e"	, "#c7a0a0", "#a94267")
-
-
 
 #cat lovers and programming experience vs dog lovers and programming experience piecharts
-cat_lovers_piechart <- plot_ly(cat_vs_dog_lovers_avg, labels = ~programming_exp, values = ~cat_lovers_avg, type = 'pie',
+cat_lovers_piechart <- plot_ly(cat_vs_dog_lovers, labels = ~programming_exp, values = ~cat_lovers_avg, type = 'pie',
              textposition = 'inside',
              textinfo = 'label+percent',
              insidetextfont = list(color = '#FFFFFF'),
@@ -44,7 +45,7 @@ cat_lovers_piechart <- plot_ly(cat_vs_dog_lovers_avg, labels = ~programming_exp,
 
 cat_lovers_piechart
 
-dog_lovers_piechart <- plot_ly(cat_vs_dog_lovers_avg, labels = ~programming_exp, values = ~dog_lovers_avg, type = 'pie',
+dog_lovers_piechart <- plot_ly(cat_vs_dog_lovers, labels = ~programming_exp, values = ~dog_lovers_avg, type = 'pie',
                                textposition = 'inside',
                                textinfo = 'label+percent',
                                insidetextfont = list(color = '#FFFFFF'),
@@ -77,9 +78,10 @@ coffee_ggplot_color + theme_hc(bgcolor = "#b8bcc8")
 #can not get rid of y axis labels
 seahawks <- select(survey_data, programming_exp, seahawks_fan)  
 
-ggplot(seahawks, aes(x = programming_exp, y = seahawks_fan,fill=seahawks_fan)) +
-  geom_bar(stat='identity') 
-
+ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
+  theme(axis.title.y = element_blank(), axis.ticks.x=element_blank()) + 
+  scale_fill_manual(values = seahawks_colors) +
+  theme_hc()
 
 
 View(cat_vs_dog_lovers)
