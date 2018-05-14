@@ -6,8 +6,14 @@ library(httr)
 library(jsonlite)
 library(maps)
 library(plotly)
+<<<<<<< HEAD
 library(ggthemes)
 library(stringr)
+=======
+library(stringr)
+library(ggthemes)
+
+>>>>>>> kelsiej
 survey_data <- read.csv("data/intro_survey.csv", stringsAsFactors = FALSE)
 
 #############################
@@ -119,6 +125,7 @@ web_experience_plot_2 <- ggplot(data = survey_data) +
   labs(x = "Web Programming Experience", y = "Overall Programming Experience") +
   facet_wrap(~info_interest)
 
+<<<<<<< HEAD
 #2. Response Statistics Table
 
 #This section will include a table reporting the break-downs 
@@ -199,6 +206,8 @@ colnames(new_frame) <- c("Levels of Experience", "Never", "A Few Times", "Interm
 rownames(new_frame) <- c("Command Line", "Version Control", "Markdown", "R", "Web")
 View(new_frame)
 
+=======
+>>>>>>> kelsiej
 ###############################
 ### 4. Second Visualization ###
 ###############################
