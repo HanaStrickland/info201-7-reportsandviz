@@ -1,3 +1,7 @@
+###############################
+### 4. Second Visualization ###
+###############################
+
 library("highcharter")
 library("dplyr")
 library("stringr")
