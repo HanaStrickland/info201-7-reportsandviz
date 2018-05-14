@@ -125,9 +125,6 @@ web_experience_plot_2 <- ggplot(data = survey_data) +
 #total number of people who gave each of the different responses to the survey, 
 #as well as any relevant aggregate data.
 
-library("dplyr")
-library("tidyr")
-
 survey_data <- read.csv("data/intro_survey.csv", stringsAsFactors = FALSE)
 
 View(survey_data)
