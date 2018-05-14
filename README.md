@@ -5,5 +5,4 @@ created as part of an assignment for the _Technical Foundations of Informatics_ 
 
 Sebastian Torres Retana
 Hana has made an edit.
-go 
-
+go
