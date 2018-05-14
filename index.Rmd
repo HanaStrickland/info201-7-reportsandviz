@@ -10,6 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 source("a7.R")
 ```
 
+- Table needs a total row
+- Visualizaton 1 needs a blind person summary with in-text code
+- Visualization 2 needs a summary
+
 # Summary
 
 This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
@@ -33,7 +37,10 @@ We found that students who used the Windows operating system tended to have more
 
 We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
 
-## Technical Experience Visualizations
+# Statistics Table
+`r kable(new_frame)`
+
+# Technical Experience Visualizations
 
 ``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
 cli_experience_plot_2
@@ -44,7 +51,7 @@ web_experience_plot_2
 
 ```
 
-### Technical Experience Visualizations Summary
+## Technical Experience Visualizations Summary
 
 Each of the visualizations above illustrate the relationship between overall intro programming experience and a particlar area of
 programming knowledge. These areas of knowledge are:
@@ -57,3 +64,15 @@ programming knowledge. These areas of knowledge are:
 
 The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
 amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
+
+# Non-Technical Visualization
+
+```{r echo = FALSE}
+cat_lovers_piechart
+
+dog_lovers_piechart
+
+coffee_ggplot_color
+
+seahawks_ggplot
+```

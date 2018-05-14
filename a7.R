@@ -6,14 +6,10 @@ library(httr)
 library(jsonlite)
 library(maps)
 library(plotly)
-<<<<<<< HEAD
-library(ggthemes)
-library(stringr)
-=======
 library(stringr)
 library(ggthemes)
+library(highcharter)
 
->>>>>>> kelsiej
 survey_data <- read.csv("data/intro_survey.csv", stringsAsFactors = FALSE)
 
 #############################
@@ -91,51 +87,16 @@ mean_linux <- exp_by_os %>%
   select(mean) %>% 
   round(2)
 
-###############################
-### 3. First Visualizations ###
-###############################
-
-cli_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = cli_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = cli_exp, y = programming_exp), color = "red", method = "") +
-  labs(x = "Command-Line/Terminal Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
-
-vcs_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = vcs_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = vcs_exp, y = programming_exp), color = "blue") +
-  labs(x = "Version Control Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
-
-md_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = md_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = md_exp, y = programming_exp), color = "green") +
-  labs(x = "Markdown Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
-
-r_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = r_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = r_exp, y = programming_exp), color = "orange") +
-  labs(x = "R Programming Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
-
-web_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = web_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = web_exp, y = programming_exp), color = "pink") +
-  labs(x = "Web Programming Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
-
-<<<<<<< HEAD
-#2. Response Statistics Table
+####################################
+### 2. Response Statistics Table ###
+####################################
 
 #This section will include a table reporting the break-downs 
 #of technical experience among the survey respondents. This table will report the 
 #total number of people who gave each of the different responses to the survey, 
 #as well as any relevant aggregate data.
 
-survey_data <- read.csv("data/intro_survey.csv", stringsAsFactors = FALSE)
 
-View(survey_data)
 unique(survey_data$programming_exp)
 
 colnames(survey_data)
@@ -162,7 +123,7 @@ tech_exp_count <- function(exp_type, n) {
   x <- select(tech_exp, exp_type)
   data_type <- rlang::sym(exp_type)
   y <- filter(x, !!data_type == n) %>% 
-    nrow()./ count * 100
+    nrow() / count * 100
   return(round(y, 0))
 }
 
@@ -204,10 +165,43 @@ new_frame <- mutate(new_frame, expert = expert)
 
 colnames(new_frame) <- c("Levels of Experience", "Never", "A Few Times", "Intermediate", "Expert")
 rownames(new_frame) <- c("Command Line", "Version Control", "Markdown", "R", "Web")
-View(new_frame)
 
-=======
->>>>>>> kelsiej
+new_frame
+###############################
+### 3. First Visualizations ###
+###############################
+
+cli_experience_plot_2 <- ggplot(data = survey_data) +
+  geom_point(mapping = aes(x = cli_exp, y = programming_exp)) +
+  geom_smooth(mapping = aes(x = cli_exp, y = programming_exp), color = "red", method = "") +
+  labs(x = "Command-Line/Terminal Experience", y = "Overall Programming Experience") +
+  facet_wrap(~info_interest)
+
+vcs_experience_plot_2 <- ggplot(data = survey_data) +
+  geom_point(mapping = aes(x = vcs_exp, y = programming_exp)) +
+  geom_smooth(mapping = aes(x = vcs_exp, y = programming_exp), color = "blue") +
+  labs(x = "Version Control Experience", y = "Overall Programming Experience") +
+  facet_wrap(~info_interest)
+
+md_experience_plot_2 <- ggplot(data = survey_data) +
+  geom_point(mapping = aes(x = md_exp, y = programming_exp)) +
+  geom_smooth(mapping = aes(x = md_exp, y = programming_exp), color = "green") +
+  labs(x = "Markdown Experience", y = "Overall Programming Experience") +
+  facet_wrap(~info_interest)
+
+r_experience_plot_2 <- ggplot(data = survey_data) +
+  geom_point(mapping = aes(x = r_exp, y = programming_exp)) +
+  geom_smooth(mapping = aes(x = r_exp, y = programming_exp), color = "orange") +
+  labs(x = "R Programming Experience", y = "Overall Programming Experience") +
+  facet_wrap(~info_interest)
+
+web_experience_plot_2 <- ggplot(data = survey_data) +
+  geom_point(mapping = aes(x = web_exp, y = programming_exp)) +
+  geom_smooth(mapping = aes(x = web_exp, y = programming_exp), color = "pink") +
+  labs(x = "Web Programming Experience", y = "Overall Programming Experience") +
+  facet_wrap(~info_interest)
+
+
 ###############################
 ### 4. Second Visualization ###
 ###############################
@@ -274,7 +268,8 @@ dog_lovers_piechart
 
 #coffee cups a day and programming experience scatterplot
 coffee_ggplot <- ggplot(survey_data, aes(x = coffee_cups, y = programming_exp)) + 
-  theme(legend.position="top", axis.text=element_text(size = 18))
+  theme(legend.position = "top", axis.text = element_text(size = 18))
+
 coffee_ggplot_color <- coffee_ggplot + geom_point(aes(color = programming_exp), alpha = 0.2, size = 10.5, 
                                                   position = position_jitter(width = .5, height = 0)) +
   labs(x = "Coffee Cups a Day", y = "Programming Exp. (1-little exp. ~ 5- most exp.)")
@@ -285,7 +280,7 @@ coffee_ggplot_color + theme_hc(bgcolor = "#b8bcc8")
 #seahawks and programming exp stacked bar chart
 seahawks <- select(survey_data, programming_exp, seahawks_fan)  
 
-ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
+seahawks_ggplot <- ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
   theme(axis.title.y = element_blank(), axis.ticks.x=element_blank()) + 
   scale_fill_manual(values = seahawks_colors) +
   labs(x = "Programming Exp. (1-little exp. ~ 5- most exp.)") +
