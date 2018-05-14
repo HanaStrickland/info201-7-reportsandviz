@@ -75,7 +75,7 @@ Each of the visualizations below illustrate the relationship between overall int
 
 The visualizations each compare these areas to experience in programming the respondent reported that they had.
 
-##Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
+## Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
 
 
 ```{r echo=FALSE}
@@ -86,7 +86,7 @@ dog_lovers_piechart
 These two charts look at the distibution of programming experience among those who responded to be a cat lover or dog lover. Distribution differs mostly among those who felt they had the highest level of of programming experience, level 5. For cat lovers, that percentage is `r paste0((cats_five),"%")` whereas for dog lovers that percentage is `r paste0((dogs_five),"%")`. The other key difference is that programming experience levels 1 and 2 percentages are almost doubled for dog lovers. Cat lovers percentages for level 1 and 2 is `r paste0((cats_one),"%")` and `r paste0((cats_two),"%")` respectively, and for dogs is `r paste0((dogs_two),"%")` and `r paste0((dogs_one),"%")` respectively.
 
 
-##Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
+## Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
 
 
 ```{r echo=FALSE}
@@ -99,7 +99,7 @@ ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=
 
 This stacked bar chart show the distribution of responses to the question "Are You a Seahawks Fan" among the five levels of programming experience. The five levels go from one being the least amount of experience to five being the most. The chart is color coded, with grey being the answer "YES!!!" to the Seahawks fan question, green being "yes", and blue being "no". Distribution among the answers is farly even.
 
-##Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
+## Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
 
 
 ```{r echo=FALSE}
