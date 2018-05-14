@@ -10,10 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 source("a7.R")
 ```
 
-- Table needs a total row
-- Visualizaton 1 needs a blind person summary with in-text code
-- Visualization 2 needs a summary
-
 # Summary
 
 This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
@@ -36,6 +32,8 @@ We found the mean, median, maximum, and minimum for programming experience by bo
 We found that students who used the Windows operating system tended to have more experience than those using the Mac OS X operating system. The average rating for Windows users was `r mean_windows` while the average rating for Mac users was `r mean_mac`. However, there were students who used Windows that reported no programming experience and Mac OS X users who reported a lot of programming experience. Students who had experience with Linux had the most experience with programming. They had an average rating of `r mean_linux`. No one who's main operating system was Linux reported that they had below a moderate level of programming experience.
 
 We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
+
+Overall, people with Linux operating systems and people who had an interest in informatics tended to have the most programming experience.
 
 # Statistics Table
 `r kable(new_frame)`
@@ -70,8 +68,8 @@ amongst the _interested_, _not interested_, _not sure_, and _no response_ survey
 ## Technical Experience and Relation to Non Technical Areas Visualizations Summary
 
 Each of the visualizations below illustrate the relationship between overall intro programming experience and an unrelated area. These unrelated areas are:
-
-- Is respondent a cat or dog lover
+  
+  - Is respondent a cat or dog lover
 - Is repondent a Seahawks fan
 - How many cups of coffee does the respondent drink each day
 
@@ -100,7 +98,7 @@ ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=
 ```
 
 This stacked bar chart show the distribution of responses to the question "Are You a Seahawks Fan" among the five levels of programming experience. The five levels go from one being the least amount of experience to five being the most. The chart is color coded, with grey being the answer "YES!!!" to the Seahawks fan question, green being "yes", and blue being "no". Distribution among the answers is farly even.
- 
+
 ##Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
 
 

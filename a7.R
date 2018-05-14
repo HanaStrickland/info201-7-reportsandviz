@@ -248,7 +248,6 @@ cat_lovers_piechart <- plot_ly(cat_vs_dog_lovers, labels = ~programming_exp, val
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
-cat_lovers_piechart
 
 #dog lovers piechart
 dog_lovers_piechart <- plot_ly(cat_vs_dog_lovers, labels = ~programming_exp, values = ~dog_lovers_avg, type = 'pie',
@@ -263,7 +262,6 @@ dog_lovers_piechart <- plot_ly(cat_vs_dog_lovers, labels = ~programming_exp, val
          xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
          yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 
-dog_lovers_piechart
 
 
 #coffee cups a day and programming experience scatterplot
