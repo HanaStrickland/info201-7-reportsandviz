@@ -57,3 +57,37 @@ programming knowledge. These areas of knowledge are:
 
 The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
 amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
+
+## Relationship Between Technical Experience and Unrelated Areas Visualizations 
+
+#Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
+
+
+```{r echo=FALSE}
+cat_lovers_piechart
+dog_lovers_piechart
+```
+
+These two charts look at the distibution of programming experience among those who responded to be a cat lover or dog lover. Distribution differs mostly among those who felt they had the highest level of of programming experience, level 5. For cat lovers, that percentage is `r paste0((cats_five),"%")` whereas for dog lovers that percentage is `r paste0((dogs_five),"%")`. The other key difference is that programming experience levels 1 and 2 percentages are almost doubled for dog lovers. Cat lovers percentages for level 1 and 2 is `r paste0((cats_one),"%")` and `r paste0((cats_two),"%")` respectively, and for dogs is `r paste0((dogs_two),"%")` and `r paste0((dogs_one),"%")` respectively.
+
+
+#Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
+
+
+```{r echo=FALSE}
+ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
+  theme(axis.title.y = element_blank(), axis.ticks.x=element_blank()) + 
+  scale_fill_manual(values = seahawks_colors) +
+  labs(x = "Programming Exp. (1-little exp. ~ 5- most exp.)") +
+  theme_hc()
+```
+
+This stacked bar chart show the distribution of responses to the question "Are You a Seahawks Fan" among the five levels of programming experience. The five levels go from one being the least amount of experience to five being the most. The chart is color coded, with grey being the answer "YES!!!" to the Seahawks fan question, green being "yes", and blue being "no". Distribution among the answers is farly even.
+ 
+#Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
+
+```{r echo=FALSE}
+coffee_ggplot_color + theme_hc(bgcolor = "#b8bcc8")
+```
+
+This dot plot shows the distribution of coffee cups respondents drank each day across the five levels of programming experience that they reported they had, with one being the least amount of experience to five the most. The distribution of coffe cups a day among the five levels is mostly the same. It is interesting to note that the only respondent to report drinking five cups of coffee a day felt they had the highest level of programming experience.
