@@ -21,7 +21,7 @@ exp_by_info_interest <- survey_data %>%
             median = median(programming_exp,na.rm = TRUE),
             minimum = min(programming_exp, na.rm = TRUE),
             maximum = max(programming_exp, na.rm = TRUE)
-            )
+  )
 
 median_no_info <- exp_by_info_interest %>% 
   filter(info_interest == "No") %>% 
