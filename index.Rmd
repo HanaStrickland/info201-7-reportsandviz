@@ -76,3 +76,104 @@ coffee_ggplot_color
 
 seahawks_ggplot
 ```
+---
+title: "Class Survey Report"
+author: "Hana Strickland, Sebastian Torres Retana, Rabab Ibrahim, Kelsie Johnson"
+date: "5/11/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+source("a7.R")
+```
+
+- Table needs a total row
+- Visualizaton 1 needs a blind person summary with in-text code
+- Visualization 2 needs a summary
+
+# Summary
+
+This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
+
+>The survey:
+
+> 1) I have never written code
+
+> 2) I've experimented with simple programming
+
+> 3) I have some experience with a programming language (e.g., took CSE142)
+
+> 4) I have moderate experience with a programming language (e.g., took CSE143)
+
+> 5) I have lots of experience with programming (e.g., beyond CSE 143)
+
+
+We found the mean, median, maximum, and minimum for programming experience by both main operating system and informatics major interest.
+
+We found that students who used the Windows operating system tended to have more experience than those using the Mac OS X operating system. The average rating for Windows users was `r mean_windows` while the average rating for Mac users was `r mean_mac`. However, there were students who used Windows that reported no programming experience and Mac OS X users who reported a lot of programming experience. Students who had experience with Linux had the most experience with programming. They had an average rating of `r mean_linux`. No one who's main operating system was Linux reported that they had below a moderate level of programming experience.
+
+We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
+
+# Statistics Table
+`r kable(new_frame)`
+
+# Technical Experience Visualizations
+
+``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
+cli_experience_plot_2
+vcs_experience_plot_2
+md_experience_plot_2
+r_experience_plot_2
+web_experience_plot_2
+
+```
+
+## Technical Experience Visualizations Summary
+
+Each of the visualizations above illustrate the relationship between overall intro programming experience and a particlar area of
+programming knowledge. These areas of knowledge are:
+
+- Command-Line/Terminal Scripting
+- Version Control/GitHub
+- Markdown
+- R Programming
+- Web Programming (HTML/CSS)
+
+The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
+amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
+
+# Non-Technical Visualization
+
+##Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
+
+
+```{r echo=FALSE}
+cat_lovers_piechart
+dog_lovers_piechart
+```
+
+These two charts look at the distibution of programming experience among those who responded to be a cat lover or dog lover. Distribution differs mostly among those who felt they had the highest level of of programming experience, level 5. For cat lovers, that percentage is `r paste0((cats_five),"%")` whereas for dog lovers that percentage is `r paste0((dogs_five),"%")`. The other key difference is that programming experience levels 1 and 2 percentages are almost doubled for dog lovers. Cat lovers percentages for level 1 and 2 is `r paste0((cats_one),"%")` and `r paste0((cats_two),"%")` respectively, and for dogs is `r paste0((dogs_two),"%")` and `r paste0((dogs_one),"%")` respectively.
+
+
+##Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
+
+
+```{r echo=FALSE}
+ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
+  theme(axis.title.y = element_blank(), axis.ticks.x=element_blank()) + 
+  scale_fill_manual(values = seahawks_colors) +
+  labs(x = "Programming Exp. (1-little exp. ~ 5- most exp.)") +
+  theme_hc()
+```
+
+This stacked bar chart show the distribution of responses to the question "Are You a Seahawks Fan" among the five levels of programming experience. The five levels go from one being the least amount of experience to five being the most. The chart is color coded, with grey being the answer "YES!!!" to the Seahawks fan question, green being "yes", and blue being "no". Distribution among the answers is farly even.
+ 
+##Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
+
+
+```{r echo=FALSE}
+coffee_ggplot_color + theme_hc(bgcolor = "#b8bcc8")
+```
+
+This dot plot shows the distribution of coffee cups respondents drank each day across the five levels of programming experience that they reported they had, with one being the least amount of experience to five the most. The distribution of coffe cups a day among the five levels is mostly the same. It is interesting to note that the only respondent to report drinking five cups of coffee a day felt they had the highest level of programming experience.
