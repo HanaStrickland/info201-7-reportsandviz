@@ -38,6 +38,8 @@ Overall, people with Linux operating systems and people who had an interest in i
 # Statistics Table
 `r kable(new_frame)`
 
+This table shows the total count of people with their level of skill for each skillset. We can see that majority of the people have never had any experience with any skillset, and a very small percent of people are experts in these skillsets. 
+
 # Technical Experience Visualizations
 
 ``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
