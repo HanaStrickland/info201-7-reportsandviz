@@ -1,3 +1,4 @@
+
 ---
 title: "Class Survey Report"
 author: "Hana Strickland, Sebastian Torres Retana, Rabab Ibrahim, Kelsie Johnson"
@@ -6,7 +7,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_chunk$set(echo = TRUE)
 source("a7.R")
 ```
 
@@ -76,11 +77,11 @@ amongst the _interested_, _not interested_, _not sure_, and _no response_ survey
 
 Each of the visualizations below illustrate the relationship between overall intro programming experience and an unrelated area. These unrelated areas are:
   
-  - Is respondent a cat or dog lover
-- Is repondent a Seahawks fan
-- How many cups of coffee does the respondent drink each day
+- Is respondent a cat or dog lover?
+- Is repondent a Seahawks fan?
+- How many cups of coffee does the respondent drink each day?
 
-The visualizations each compare these areas to experience in programming the respondent reported that they had.
+The visualizations compare these unrelated areas to a respondent's reported programming experience.
 
 ## Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
 
@@ -97,8 +98,8 @@ These two charts look at the distibution of programming experience among those w
 
 
 ```{r echo=FALSE}
-ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=seahawks_fan))+
-  theme(axis.title.y = element_blank(), axis.ticks.x=element_blank()) + 
+ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill = seahawks_fan))+
+  theme(axis.title.y = element_blank(), axis.ticks.x = element_blank()) + 
   scale_fill_manual(values = seahawks_colors) +
   labs(x = "Programming Exp. (1-little exp. ~ 5- most exp.)") +
   theme_hc()
