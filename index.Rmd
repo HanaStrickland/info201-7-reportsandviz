@@ -1,3 +1,4 @@
+
 ---
 title: "Class Survey Report"
 author: "Hana Strickland, Sebastian Torres Retana, Rabab Ibrahim, Kelsie Johnson"
@@ -9,6 +10,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 source("a7.R")
 ```
+
+
 
 # Summary
 
@@ -34,84 +37,6 @@ We found that students who used the Windows operating system tended to have more
 We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
 
 Overall, people with Linux operating systems and people who had an interest in informatics tended to have the most programming experience.
-
-# Statistics Table
-`r kable(new_frame)`
-
-# Technical Experience Visualizations
-
-``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
-cli_experience_plot_2
-vcs_experience_plot_2
-md_experience_plot_2
-r_experience_plot_2
-web_experience_plot_2
-
-```
-
-## Technical Experience Visualizations Summary
-
-Each of the visualizations above illustrate the relationship between overall intro programming experience and a particlar area of
-programming knowledge. These areas of knowledge are:
-
-- Command-Line/Terminal Scripting
-- Version Control/GitHub
-- Markdown
-- R Programming
-- Web Programming (HTML/CSS)
-
-The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
-amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
-
-# Non-Technical Visualization
-
-```{r echo = FALSE}
-cat_lovers_piechart
-
-dog_lovers_piechart
-
-coffee_ggplot_color
-
-seahawks_ggplot
-```
----
-title: "Class Survey Report"
-author: "Hana Strickland, Sebastian Torres Retana, Rabab Ibrahim, Kelsie Johnson"
-date: "5/11/2018"
-output: html_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-source("a7.R")
-```
-
-- Table needs a total row
-- Visualizaton 1 needs a blind person summary with in-text code
-- Visualization 2 needs a summary
-
-# Summary
-
-This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
-
->The survey:
-
-> 1) I have never written code
-
-> 2) I've experimented with simple programming
-
-> 3) I have some experience with a programming language (e.g., took CSE142)
-
-> 4) I have moderate experience with a programming language (e.g., took CSE143)
-
-> 5) I have lots of experience with programming (e.g., beyond CSE 143)
-
-
-We found the mean, median, maximum, and minimum for programming experience by both main operating system and informatics major interest.
-
-We found that students who used the Windows operating system tended to have more experience than those using the Mac OS X operating system. The average rating for Windows users was `r mean_windows` while the average rating for Mac users was `r mean_mac`. However, there were students who used Windows that reported no programming experience and Mac OS X users who reported a lot of programming experience. Students who had experience with Linux had the most experience with programming. They had an average rating of `r mean_linux`. No one who's main operating system was Linux reported that they had below a moderate level of programming experience.
-
-We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
 
 # Statistics Table
 `r kable(new_frame)`
