@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo=TRUE)
 source("a7.R")
 ```
 
@@ -14,7 +14,7 @@ source("a7.R")
 
 This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
 
->The survey:
+> The survey:
 
 > 1) I have never written code
 
@@ -36,11 +36,11 @@ We found that students with an informatics interest tended to have more programm
 ## Technical Experience Visualizations
 
 ``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
-cli_experience_plot_2
-vcs_experience_plot_2
-md_experience_plot_2
-r_experience_plot_2
-web_experience_plot_2
+cli_experience_plot
+vcs_experience_plot
+md_experience_plot
+r_experience_plot
+web_experience_plot
 
 ```
 
@@ -56,4 +56,9 @@ programming knowledge. These areas of knowledge are:
 - Web Programming (HTML/CSS)
 
 The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
-amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
+amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience. In the above data visualization, some sample statistics are:
+
+- Mean Experience Level for those **Interested in Informatics**: `r  mean_yes_info`
+- Mean Experience Level for those **Not Interested in Informatics**: `r mean_no_info`
+- Mean Experience Level for those **Not Sure about Their Interest In Informatics**: `r mean_unsure_info`
+- Mean Experience Level for those **Who Did Not Put Down Any Interest Level In Informatics**: `r mean_na_info`
