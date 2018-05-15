@@ -51,6 +51,57 @@ r_experience_plot_2
 web_experience_plot_2
 
 ```
+=======
+---
+title: "Class Survey Report"
+author: "Hana Strickland, Sebastian Torres Retana, Rabab Ibrahim, Kelsie Johnson"
+date: "5/11/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+source("a7.R")
+```
+
+# Summary
+
+This informatics class requires students to learn programming. At the beginning of the class, students were asked to fill out a survey about their prior programming experience. Students rated their experience on a scale between 1 to 5.
+
+> The survey:
+
+> 1) I have never written code
+
+> 2) I've experimented with simple programming
+
+> 3) I have some experience with a programming language (e.g., took CSE142)
+
+> 4) I have moderate experience with a programming language (e.g., took CSE143)
+
+> 5) I have lots of experience with programming (e.g., beyond CSE 143)
+
+
+We found the mean, median, maximum, and minimum for programming experience by both main operating system and informatics major interest.
+
+We found that students who used the Windows operating system tended to have more experience than those using the Mac OS X operating system. The average rating for Windows users was `r mean_windows` while the average rating for Mac users was `r mean_mac`. However, there were students who used Windows that reported no programming experience and Mac OS X users who reported a lot of programming experience. Students who had experience with Linux had the most experience with programming. They had an average rating of `r mean_linux`. No one who's main operating system was Linux reported that they had below a moderate level of programming experience.
+
+We found that students with an informatics interest tended to have more programming experience than those who were not sure, and students who were not sure tended to have more programming experience than those who were not interested in informatics. Students who were interested in informatics, unsure of informatics, and not interested in informatics had an average programming experience rating of `r mean_yes_info`, `r mean_unsure_info`, and `r mean_no_info`, respectively. However, all three categories included students who reported no programming experience and a lot of programming experience.
+
+Overall, people with Linux operating systems and people who had an interest in informatics tended to have the most programming experience.
+
+# Statistics Table
+`r kable(new_frame)`
+
+# Technical Experience Visualizations
+
+``` {r Part 3: First Visualizations, echo=FALSE, cache=FALSE, results=FALSE, warning=FALSE, response=FALSE, comment=FALSE, message=FALSE}
+cli_experience_plot
+vcs_experience_plot
+md_experience_plot
+r_experience_plot
+web_experience_plot
+
+```
 
 ## Technical Experience Visualizations Summary
 
@@ -64,11 +115,27 @@ programming knowledge. These areas of knowledge are:
 - Web Programming (HTML/CSS)
 
 The visualizations are separated by the interest level in Informatics of the survey takers to see the difference in experience levels
-amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience.
+amongst the _interested_, _not interested_, _not sure_, and _no response_ survey answers. The goal is to visualize the technical knowledge base of the survey takers in each individual facet of experience. In the above data visualization, some sample statistics are:
+
+- Mean Experience Level for those **Interested in Informatics**: `r  mean_yes_info`
+- Mean Experience Level for those **Not Interested in Informatics**: `r mean_no_info`
+- Mean Experience Level for those **Not Sure about Their Interest In Informatics**: `r mean_unsure_info`
+- Mean Experience Level for those **Who Did Not Put Down Any Interest Level In Informatics**: `r mean_na_info`
 
 # Non-Technical Visualization
+>>>>>>> a0f22615c74916ab0b78ca1337c3bab0368ea5e7
 
-##Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
+## Technical Experience and Relation to Non Technical Areas Visualizations Summary
+
+Each of the visualizations below illustrate the relationship between overall intro programming experience and an unrelated area. These unrelated areas are:
+  
+  - Is respondent a cat or dog lover
+- Is repondent a Seahawks fan
+- How many cups of coffee does the respondent drink each day
+
+The visualizations each compare these areas to experience in programming the respondent reported that they had.
+
+## Pie Charts: Comparing Programming Experience Levels Among Cat and Dog Lovers
 
 
 ```{r echo=FALSE}
@@ -79,7 +146,7 @@ dog_lovers_piechart
 These two charts look at the distibution of programming experience among those who responded to be a cat lover or dog lover. Distribution differs mostly among those who felt they had the highest level of of programming experience, level 5. For cat lovers, that percentage is `r paste0((cats_five),"%")` whereas for dog lovers that percentage is `r paste0((dogs_five),"%")`. The other key difference is that programming experience levels 1 and 2 percentages are almost doubled for dog lovers. Cat lovers percentages for level 1 and 2 is `r paste0((cats_one),"%")` and `r paste0((cats_two),"%")` respectively, and for dogs is `r paste0((dogs_two),"%")` and `r paste0((dogs_one),"%")` respectively.
 
 
-##Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
+## Stacked Bar Charts: Comparing Programming Experience and Seahawk Fan Levels
 
 
 ```{r echo=FALSE}
@@ -91,8 +158,8 @@ ggplot(data = seahawks, mapping = aes(x = programming_exp)) + geom_bar(aes(fill=
 ```
 
 This stacked bar chart show the distribution of responses to the question "Are You a Seahawks Fan" among the five levels of programming experience. The five levels go from one being the least amount of experience to five being the most. The chart is color coded, with grey being the answer "YES!!!" to the Seahawks fan question, green being "yes", and blue being "no". Distribution among the answers is farly even.
- 
-##Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
+
+## Dot Plot: Comparing Programming Experience and Daily Amount of Coffee Cups Drunk
 
 
 ```{r echo=FALSE}

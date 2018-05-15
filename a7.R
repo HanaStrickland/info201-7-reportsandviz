@@ -35,6 +35,11 @@ median_unsure_info <- exp_by_info_interest %>%
   filter(info_interest == "Not sure") %>% 
   select(median)
 
+mean_na_info <- exp_by_info_interest %>%
+  filter(info_interest == "N/A") %>%
+  select(mean) %>%
+  round(2)
+
 mean_no_info <- exp_by_info_interest %>% 
   filter(info_interest == "No") %>% 
   select(mean) %>% 
@@ -44,7 +49,6 @@ mean_yes_info <- exp_by_info_interest %>%
   filter(info_interest == "Yes") %>% 
   select(mean) %>% 
   round(2)
-
 
 mean_unsure_info <- exp_by_info_interest %>% 
   filter(info_interest == "Not sure") %>% 
@@ -91,11 +95,10 @@ mean_linux <- exp_by_os %>%
 ### 2. Response Statistics Table ###
 ####################################
 
-#This section will include a table reporting the break-downs 
-#of technical experience among the survey respondents. This table will report the 
-#total number of people who gave each of the different responses to the survey, 
-#as well as any relevant aggregate data.
-
+# This section will include a table reporting the break-downs 
+# of technical experience among the survey respondents. This table will report the 
+# total number of people who gave each of the different responses to the survey, 
+# as well as any relevant aggregate data.
 
 unique(survey_data$programming_exp)
 
@@ -117,8 +120,10 @@ expert <- row
 new_frame <- data.frame(all_exp)
 
 count <- nrow(tech_exp)
-#this function counts the total number of people with the certain level of
-#experience for each category 
+
+# This function counts the total number of people with the certain level of
+# experience for each category
+
 tech_exp_count <- function(exp_type, n) {
   x <- select(tech_exp, exp_type)
   data_type <- rlang::sym(exp_type)
@@ -162,44 +167,39 @@ web <- tech_exp_count("web_exp", 3)
 
 expert <- c(cl, vc, md, r, web)
 new_frame <- mutate(new_frame, expert = expert)
+new_frame <- new_frame[, c(2,3,4,5)]
 
-colnames(new_frame) <- c("Levels of Experience", "Never", "A Few Times", "Intermediate", "Expert")
+colnames(new_frame) <- c("Never", "A Few Times", "Intermediate", "Expert")
 rownames(new_frame) <- c("Command Line", "Version Control", "Markdown", "R", "Web")
 
-new_frame
 ###############################
 ### 3. First Visualizations ###
 ###############################
 
-cli_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = cli_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = cli_exp, y = programming_exp), color = "red", method = "") +
-  labs(x = "Command-Line/Terminal Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
+cli_experience_plot <- ggplot(data = survey_data) +
+  geom_jitter(mapping = aes(x = programming_exp, y = cli_exp), colour = "orange") +
+  labs(x = "Overall Programming Experience Level", y = "Command Line/Terminal Experience Level") +
+  facet_grid(. ~ info_interest, labeller = label_bquote(cols = paste(.(info_interest), " Informatics Interst")))
 
-vcs_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = vcs_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = vcs_exp, y = programming_exp), color = "blue") +
-  labs(x = "Version Control Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
+vcs_experience_plot <- ggplot(data = survey_data) +
+  geom_jitter(mapping = aes(x = programming_exp, y = vcs_exp), colour = "green") +
+  labs(x = "Overall Programming Experience Level", y = "Version Control/GitHub Experience Level") +
+  facet_grid(. ~ info_interest, labeller = label_bquote(cols = paste(.(info_interest), " Informatics Interst")))
 
-md_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = md_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = md_exp, y = programming_exp), color = "green") +
-  labs(x = "Markdown Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
+md_experience_plot <- ggplot(data = survey_data) +
+  geom_jitter(mapping = aes(x = programming_exp, y = md_exp), colour = "blue") +
+  labs(x = "Overall Programming Experience Level", y = "Markdown Experience Level") +
+  facet_grid(. ~ info_interest, labeller = label_bquote(cols = paste(.(info_interest), " Informatics Interst")))
 
-r_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = r_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = r_exp, y = programming_exp), color = "orange") +
-  labs(x = "R Programming Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
+r_experience_plot <- ggplot(data = survey_data) +
+  geom_jitter(mapping = aes(x = programming_exp, y = r_exp), colour = "red") +
+  labs(x = "Overall Programming Experience Level", y = "R Programming Experience Level") +
+  facet_grid(. ~ info_interest, labeller = label_bquote(cols = paste(.(info_interest), " Informatics Interst")))
 
-web_experience_plot_2 <- ggplot(data = survey_data) +
-  geom_point(mapping = aes(x = web_exp, y = programming_exp)) +
-  geom_smooth(mapping = aes(x = web_exp, y = programming_exp), color = "pink") +
-  labs(x = "Web Programming Experience", y = "Overall Programming Experience") +
-  facet_wrap(~info_interest)
+web_experience_plot <- ggplot(data = survey_data) +
+  geom_jitter(mapping = aes(x = programming_exp, y = web_exp), colour = "pink") +
+  labs(x = "Overall Programming Experience Level", y = "Web Programming (HTML/CSS) Experience Level") +
+  facet_grid(. ~ info_interest, labeller = label_bquote(cols = paste(.(info_interest), " Informatics Interst")))
 
 
 ###############################
